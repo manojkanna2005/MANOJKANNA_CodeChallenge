@@ -1,4 +1,4 @@
-package com.hexaware.main.test.repository;
+package com.hexaware.main.test.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

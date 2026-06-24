@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.hexaware.main.test.dto.PlayerDTO;
 import com.hexaware.main.test.entity.Player;
 import com.hexaware.main.test.exception.ResorceNotFoundException;
-import com.hexaware.main.test.repository.PlayerRepository;
+import com.hexaware.main.test.repo.PlayerRepository;
 
 @Service
 public class PlayerServiceImpl implements IPlayerService{
