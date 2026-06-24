@@ -47,7 +47,7 @@ public class PlayerDTO {
 	
 	@NotNull
 	@NotBlank
-	private String StateName;
+	private String countryStateName;
 	
 	@NotBlank
 	private String description;
