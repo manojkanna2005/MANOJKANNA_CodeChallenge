@@ -11,4 +11,8 @@ public class GlobalExceptionHandler {
 public ResponseEntity<String> handleResourseNotFound(ResorceNotFoundException ex){
 	return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
 }
+@ExceptionHandler(TeamNotFoundException.class)
+public ResponseEntity<String> handleTeamNotFound(TeamNotFoundException ex){
+	return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
+}
 }

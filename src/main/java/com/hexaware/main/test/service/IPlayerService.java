@@ -11,4 +11,5 @@ public interface IPlayerService {
 	PlayerDTO getPlayerById(int playerId);
 	List<PlayerDTO> getAllPlayers();
 	String deletePlayer(Integer playerId);
+	List<PlayerDTO> getPlayerByTeamName(String teamName);
 }

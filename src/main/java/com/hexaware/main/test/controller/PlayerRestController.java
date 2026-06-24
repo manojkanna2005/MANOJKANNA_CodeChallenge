@@ -38,6 +38,11 @@ public class PlayerRestController {
 	public PlayerDTO getPlayerById(@PathVariable int playerId) {
 		return service.getPlayerById(playerId);
 	}
+	
+	@GetMapping("/team/{teamName}")
+	public List<PlayerDTO> getPlayerByTeamName(@PathVariable String teamName){
+		return service.getPlayerByTeamName(teamName);
+	}
 
 	@GetMapping("/all")
 	public List<PlayerDTO> getAllPlayers() {

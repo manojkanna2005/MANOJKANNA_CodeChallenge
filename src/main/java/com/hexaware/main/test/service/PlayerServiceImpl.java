@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.hexaware.main.test.dto.PlayerDTO;
 import com.hexaware.main.test.entity.Player;
 import com.hexaware.main.test.exception.ResorceNotFoundException;
+import com.hexaware.main.test.exception.TeamNotFoundException;
 import com.hexaware.main.test.repo.PlayerRepository;
 
 @Service
@@ -31,7 +32,7 @@ public class PlayerServiceImpl implements IPlayerService{
 		play.setRole(dto.getRole());
 		play.setTotalMatches(dto.getTotalMatches());
 		play.setTeamName(dto.getTeamName());
-		play.setCountryStateName(dto.getCountryStateName());
+		play.setStateName(dto.getStateName());
 		play.setDescription(dto.getDescription());
 		return convertToDTO(repo.save(play));
 	}
@@ -41,7 +42,15 @@ public class PlayerServiceImpl implements IPlayerService{
 		Player play = repo.findById(playerId).orElseThrow(()->new ResorceNotFoundException("Player not found"));
 		return convertToDTO(play);
 	}
-
+	@Override
+	public List<PlayerDTO> getPlayerByTeamName(String teamName) {
+		List<Player> play = repo.findByTeamName(teamName);
+		if(play.isEmpty()) {
+			throw new TeamNotFoundException("No Player found in : "+teamName);
+		}
+		return play.stream().map(this::convertToDTO).collect(Collectors.toList());
+	}
+	
 	@Override
 	public List<PlayerDTO> getAllPlayers() {
 		return repo.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
@@ -62,7 +71,7 @@ public class PlayerServiceImpl implements IPlayerService{
 		dto.setRole(player.getRole());
 		dto.setTotalMatches(player.getTotalMatches());
 		dto.setTeamName(player.getTeamName());
-		dto.setCountryStateName(player.getCountryStateName());
+		dto.setStateName(player.getStateName());
 		dto.setDescription(player.getDescription());
 		return dto;
 	}
@@ -74,9 +83,10 @@ public class PlayerServiceImpl implements IPlayerService{
 		play.setRole(dto.getRole());
 		play.setTotalMatches(dto.getTotalMatches());
 		play.setTeamName(dto.getTeamName());
-		play.setCountryStateName(dto.getCountryStateName());
+		play.setStateName(dto.getStateName());
 		play.setDescription(dto.getDescription());
 		return play;
 	}
+
 	
 }

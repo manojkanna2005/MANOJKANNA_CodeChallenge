@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Player_table")
+@Table(name = "Players_table")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,8 +32,8 @@ public class Player {
 	private int totalMatches;
 	@Column(name = "Team_Name")
 	private String teamName;
-	@Column(name = "Country_State_Name")
-	private String countryStateName;
+	@Column(name = "State_Name")
+	private String StateName;
 	@Column(name = "Description")
 	private String description;
 }
