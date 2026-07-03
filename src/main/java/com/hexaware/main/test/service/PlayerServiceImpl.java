@@ -42,6 +42,7 @@ public class PlayerServiceImpl implements IPlayerService{
 		Player play = repo.findById(playerId).orElseThrow(()->new ResorceNotFoundException("Player not found"));
 		return convertToDTO(play);
 	}
+	
 	@Override
 	public List<PlayerDTO> getPlayerByTeamName(String teamName) {
 		List<Player> play = repo.findByTeamName(teamName);
